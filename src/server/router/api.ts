@@ -5,8 +5,8 @@ const api = express.Router();
 
 api.use(express.json());
 
-api.post('/submit', (_req, res) => {
-  const handleFormResult = formstack(_req.body);
+api.post('/submit', async (_req, res) => {
+  const handleFormResult = await formstack(_req.body);
   res.json(handleFormResult);
 });
 

@@ -10,12 +10,17 @@
     "buildserve": "npm run build && npm run serve",
     "start": "node dist/server/main.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
     "@rollup/pluginutils": "^5.1.0",
+    "@types/better-sqlite3": "^7.6.11",
+    "better-sqlite3": "^11.1.2",
     "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.32.1",
     "express": "^4.19.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -32,6 +37,7 @@
     "@typescript-eslint/parser": "^7.17.0",
     "@vitejs/plugin-react": "^4.3.1",
     "concurrently": "^8.2.2",
+    "drizzle-kit": "^0.23.1",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
