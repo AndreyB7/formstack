@@ -9,7 +9,7 @@ Create database:
 
 ## Setup mailer via Google SMTP
 Open Google account management and search 'App passwords'.
-Add app, copy password SMTP_APP_PASS to .env.
+Add app, copy password to .env SMTP_APP_PASS, add email to .env SMTP_EMAIL.
 
 ## Submissions list
 http://localhost:3003/api/submissions
