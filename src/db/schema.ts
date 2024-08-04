@@ -3,6 +3,7 @@ import { db } from "./drizzle.ts";
 
 export const submissions = sqliteTable('submissions', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  email: text('email').notNull(),
   json: text('json', { mode: 'json' })
 })
 

@@ -1,5 +1,6 @@
 import "./App.css";
-import SimpleForm from "./components/SimpleForm.tsx";
+import SimpleForm from "./components/SimpleForm/SimpleForm.tsx";
+
 
 function App() {
 

@@ -1,8 +1,7 @@
 import express from "express";
 import ViteExpress from "vite-express";
-import dotenv from "dotenv";
+import "dotenv/config"
 import api from "./router/api.ts";
-dotenv.config();
 
 const PORT = parseInt(`${process.env.PORT}`, 10) || 3000;
 

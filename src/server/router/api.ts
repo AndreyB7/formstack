@@ -1,13 +1,17 @@
 import express from "express";
-import formstack from "../formstack/formstack.ts";
+import { addSubmission, getAllSubmissions } from "../formstack/formstack.ts";
 
 const api = express.Router();
 
 api.use(express.json());
 
 api.post('/submit', async (_req, res) => {
-  const handleFormResult = await formstack(_req.body);
+  const handleFormResult = await addSubmission(_req.body);
   res.json(handleFormResult);
+});
+
+api.get('/submissions', async (_req, res) => {
+  res.json(await getAllSubmissions());
 });
 
 export default api;

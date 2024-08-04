@@ -1,10 +1,28 @@
-import { getAllSubmission, insertSubmission } from "../../db/schema.ts";
-
-
-const formstack = async (body: any) => {
-  await insertSubmission({json: JSON.stringify(body)})
-  const submissions = await getAllSubmission()
-  return {message: JSON.stringify(submissions)}
+import { getAllSubmission, InsertSubmission, insertSubmission } from "../../db/schema.ts";
+import { sendMail } from "../services/mailerService.ts";
+const smtpConfig = {
+  email: process.env.SMTP_EMAIL as string,
 }
 
-export default formstack;
+const addSubmission = async (body: InsertSubmission) => {
+  await insertSubmission({
+    email: body.email,
+    json: JSON.stringify(body)
+  })
+  try {
+    await sendMail(smtpConfig.email,'New Form Submission',`<div>${JSON.stringify(body)}</div>`)
+  } catch (e) {
+    const error = e as Error;
+    return {message: error.message}
+  }
+  return {message: 'Sucsess!'}
+}
+
+export const getAllSubmissions = async () => {
+  return await getAllSubmission();
+}
+
+export {
+  addSubmission,
+  getAllSubmission,
+}

@@ -1,12 +1,15 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import './SimpleForm.css';
 
 interface FormData {
+  email: string;
   firstName: string;
   lastName: string;
 }
 
 const SimpleForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
+    email: '',
     firstName: '',
     lastName: ''
   });
@@ -50,33 +53,44 @@ const SimpleForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={ handleSubmit } className={'form'}>
+      <div className={'formInput'}>
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={ formData.email }
+          onChange={ handleChange }
+          disabled={ isSubmitting }
+        />
+      </div>
+      <div className={'formInput'}>
         <label htmlFor="firstName">First Name:</label>
         <input
           type="text"
           id="firstName"
           name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          disabled={isSubmitting}
+          value={ formData.firstName }
+          onChange={ handleChange }
+          disabled={ isSubmitting }
         />
       </div>
-      <div>
+      <div className={'formInput'}>
         <label htmlFor="lastName">Last Name:</label>
         <input
           type="text"
           id="lastName"
           name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          disabled={isSubmitting}
+          value={ formData.lastName }
+          onChange={ handleChange }
+          disabled={ isSubmitting }
         />
       </div>
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Submitting...' : 'Submit'}
+      <button type="submit" disabled={ isSubmitting }>
+        { isSubmitting ? 'Submitting...' : 'Submit' }
       </button>
-      {responseMessage && <p>{responseMessage}</p>}
+      { responseMessage && <p className={'message'}>{ responseMessage }</p> }
     </form>
   );
 };

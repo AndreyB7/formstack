@@ -24,5 +24,7 @@ dist-ssr
 *.sw?
 vite.config.ts.timestamp*
 
+.env
+
 /src/db/migrations/
 db.db
